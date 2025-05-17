@@ -3,7 +3,7 @@ FROM node:22-bookworm
 WORKDIR /usr/oauth-agent
 COPY dist                /usr/oauth-agent/dist
 COPY package*.json       /usr/oauth-agent/
-RUN npm install --production
+RUN npm install --omit=dev
 
 RUN groupadd --gid 10000 apiuser \
   && useradd --uid 10001 --gid apiuser --shell /bin/bash --create-home apiuser

@@ -1,0 +1,32 @@
+{
+    "name": "oauth-agent-node-express",
+    "version": "1.6.0",
+    "description": "An OAuth Agent that runs on the Express web server",
+    "scripts": {
+        "start": "./start.sh",
+        "test": "./test/test-oauth-agent.sh",
+        "buildRelease": "rm -rf dist && tsc"
+    },
+    "author": "Curity AB",
+    "license": "Apache-2.0",
+    "type": "module",
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "cookie": "^1.0.1",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "express": "^5.0.1",
+        "jose": "^5.9.6",
+        "node-fetch": "^3.3.2"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.6",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/node-fetch": "^2.6.9",
+        "tsx": "^4.19.1",
+        "typescript": "^5.7.2"
+    }
+}

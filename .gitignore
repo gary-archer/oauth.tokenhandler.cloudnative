@@ -1,0 +1,7 @@
+node_modules
+dist
+data
+certs/*.key
+certs/*.crt
+certs/*.p12
+.DS_Store

@@ -1,4 +1,4 @@
-FROM kong/kong:3.9-ubuntu
+FROM kong/kong:3.9.0-ubuntu
 
 USER root
 

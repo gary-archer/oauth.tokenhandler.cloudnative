@@ -28,6 +28,7 @@ fi
 #
 # Build the docker image for the Kong API Gateway
 #
+docker pull kong/kong:3.9-ubuntu
 docker build -f docker/kong/Dockerfile -t apigateway:latest .
 if [ $? -ne 0 ]; then
   echo 'Problem encountered building the API Gateway docker image'

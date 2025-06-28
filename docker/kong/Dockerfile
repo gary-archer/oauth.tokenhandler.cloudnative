@@ -1,9 +1,9 @@
-FROM kong/kong:3.9.0-ubuntu
+FROM kong/kong:3.9-ubuntu
 
 USER root
 
 RUN apt-get update
-RUN apt-get install -y git unzip
+RUN apt-get install -y git unzip wget
 
 RUN git config --global url."https://".insteadOf git:// && \
     git config --global advice.detachedHead false && \

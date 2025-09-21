@@ -11,20 +11,20 @@
     "license": "Apache-2.0",
     "type": "module",
     "engines": {
-        "node": ">=22"
+        "node": ">=24"
     },
     "dependencies": {
         "cookie": "^1.0.1",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "express": "^5.1.0",
-        "jose": "^6.0.11"
+        "jose": "^6.1.0"
     },
     "devDependencies": {
         "@types/cookie-parser": "^1.4.6",
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.3",
-        "tsx": "^4.20.3",
-        "typescript": "^5.8.3"
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2"
     }
 }

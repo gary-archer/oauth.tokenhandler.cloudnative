@@ -1,8 +1,8 @@
 FROM node:24-bookworm-slim
 
 WORKDIR /usr/oauth-agent
-COPY dist                /usr/oauth-agent/dist
-COPY package*.json       /usr/oauth-agent/
+COPY --chown=10001:10000 dist            /usr/oauth-agent/dist
+COPY --chown=10001:10000 package*.json   /usr/oauth-agent/
 RUN npm install --omit=dev
 
 RUN groupadd --gid 10000 apiuser \

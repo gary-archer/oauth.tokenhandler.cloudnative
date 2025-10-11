@@ -9,6 +9,6 @@ RUN git config --global url."https://".insteadOf git:// && \
     git config --global advice.detachedHead false && \
     luarocks install kong-phantom-token 2.0.0
 
-COPY docker/kong/oauth-proxy /usr/local/share/lua/5.1/kong/plugins/oauth-proxy
+COPY --chown=10001:10000 docker/kong/oauth-proxy /usr/local/share/lua/5.1/kong/plugins/oauth-proxy
 
 USER kong

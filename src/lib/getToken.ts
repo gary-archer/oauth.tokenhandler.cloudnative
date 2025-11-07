@@ -14,6 +14,7 @@
  *  limitations under the License.
  */
 
+import {URLSearchParams} from 'url';
 import {decryptCookie} from './cookieEncrypter.js'
 import {Grant} from './grant.js'
 import OAuthAgentConfiguration from './oauthAgentConfiguration.js'
@@ -36,6 +37,17 @@ async function getTokenEndpointResponse(config: OAuthAgentConfiguration, code: s
     }
 
     try {
+        
+        const body = new URLSearchParams();
+        body.append('grant_type', 'authorization_code');
+        body.append('client_id', config.clientID);
+        if (config.clientSecret) {
+            body.append('client_secret', config.clientSecret);
+        }
+        body.append('redirect_uri', config.redirectUri);
+        body.append('code', code);
+        body.append('code_verifier', parsedTempLoginData.codeVerifier);
+
         const res = await fetch(
             config.tokenEndpoint,
             {
@@ -44,7 +56,7 @@ async function getTokenEndpointResponse(config: OAuthAgentConfiguration, code: s
                     'Authorization': 'Basic ' + Buffer.from(config.clientID+ ":" + config.clientSecret).toString('base64'),
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'grant_type=authorization_code&redirect_uri=' + config.redirectUri + '&code=' + code + '&code_verifier=' + parsedTempLoginData.codeVerifier
+                body: body.toString(),
             })
 
         const text = await res.text()
@@ -77,6 +89,15 @@ async function refreshAccessToken(refreshToken: string, config: OAuthAgentConfig
 {
     try {
 
+        const body = new URLSearchParams();
+        body.append('grant_type', 'refresh_token');
+        body.append('client_id', config.clientID);
+        if (config.clientSecret) {
+            body.append('client_secret', config.clientSecret);
+        }
+        body.append('refresh_token', refreshToken);
+        body.toString()
+
         const res = await fetch(
             config.tokenEndpoint,
             {
@@ -85,7 +106,7 @@ async function refreshAccessToken(refreshToken: string, config: OAuthAgentConfig
                     'Authorization': 'Basic ' + Buffer.from(config.clientID + ":" + config.clientSecret).toString('base64'),
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'grant_type=refresh_token&refresh_token='+refreshToken
+                body: body.toString(),
             })
         
         // Read text if it exists

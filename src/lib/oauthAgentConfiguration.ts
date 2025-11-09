@@ -34,6 +34,7 @@ export default class OAuthAgentConfiguration {
     public authorizeEndpoint: string
     public logoutEndpoint: string
     public tokenEndpoint: string
+    public userInfoEndpoint: string
     public jwksEndpoint: string
     public idTokenAlgorithm: string
 
@@ -57,6 +58,7 @@ export default class OAuthAgentConfiguration {
         authorizeEndpoint: string,
         logoutEndpoint: string,
         tokenEndpoint: string,
+        userInfoEndpoint: string,
         jwksEndpoint: string,
         idTokenAlgorithm: string,
         cookieNamePrefix: string,
@@ -84,6 +86,7 @@ export default class OAuthAgentConfiguration {
         this.authorizeEndpoint = authorizeEndpoint
         this.logoutEndpoint = logoutEndpoint
         this.tokenEndpoint = tokenEndpoint
+        this.userInfoEndpoint = userInfoEndpoint
         this.jwksEndpoint = jwksEndpoint
         this.idTokenAlgorithm = idTokenAlgorithm
     }

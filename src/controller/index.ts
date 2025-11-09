@@ -17,6 +17,7 @@
 import SessionController from './SessionController.js'
 import LoginController from './LoginController.js'
 import AccessTokenController from './AccessTokenController.js'
+import UserInfoController from './UserInfoController.js'
 import RefreshTokenController from './RefreshTokenController.js'
 import LogoutController from './LogoutController.js'
 
@@ -25,6 +26,7 @@ export {
     SessionController,
     LoginController,
     AccessTokenController,
+    UserInfoController,
     RefreshTokenController,
     LogoutController,
 }

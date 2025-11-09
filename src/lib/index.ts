@@ -23,6 +23,7 @@ import { getCookieSerializeOptions, getCookiesForTokenResponse, getCookiesForUns
 import { getTokenEndpointResponse, refreshAccessToken } from './getToken.js'
 import getIDTokenClaimsFromCookie from './getIDTokenClaims.js'
 import getRedirectUri from './redirectUri.js'
+import getUserInfo from './getUserInfo.js'
 import getLogoutURL from './getLogoutURL.js'
 import { getTempLoginDataCookie, getTempLoginDataCookieForUnset, generateRandomString } from './pkce.js'
 import { getRTCookieName, getIDCookieName, getATCookieName, getTempLoginDataCookieName } from './cookieName.js'
@@ -38,6 +39,7 @@ export {
     getTokenEndpointResponse,
     getIDTokenClaimsFromCookie,
     getRedirectUri,
+    getUserInfo,
     getLogoutURL,
     refreshAccessToken,
     getCookiesForUnset,

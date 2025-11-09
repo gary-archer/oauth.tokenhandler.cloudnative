@@ -24,6 +24,7 @@ import {
     SessionController,
     LoginController,
     AccessTokenController,
+    UserInfoController,
     RefreshTokenController,
     LogoutController,
 } from './controller/index.js'
@@ -48,6 +49,7 @@ const controllers = {
     '/session': new SessionController(),
     '/login': new LoginController(remoteJWKSet),
     '/access' : new AccessTokenController(),
+    '/userinfo' : new UserInfoController(),
     '/refresh': new RefreshTokenController(remoteJWKSet),
     '/logout': new LogoutController(),
 }

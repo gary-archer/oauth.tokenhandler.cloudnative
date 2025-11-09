@@ -44,4 +44,5 @@ export const config: OAuthAgentConfiguration = {
     tokenEndpoint: process.env.TOKEN_ENDPOINT || '',
     jwksEndpoint: process.env.JWKS_ENDPOINT || '',
     idTokenAlgorithm: process.env.ID_TOKEN_ALGORITHM || '',
+    userInfoEndpoint: process.env.USERINFO_ENDPOINT || '',
 }

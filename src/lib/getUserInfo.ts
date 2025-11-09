@@ -36,6 +36,7 @@ async function getUserInfo(config: OAuthAgentConfiguration, encKey: string, encr
             throw error
         }
 
+        console.log(`*** USERINFO REQUEST SENDING ACCESS TOKEN: ${accessToken}`);
         const res = await fetch(
             config.userInfoEndpoint,
             {

@@ -1,30 +1,30 @@
 {
-    "name": "oauth-agent-node-express",
-    "version": "1.6.0",
-    "description": "An OAuth Agent that runs on the Express web server",
-    "scripts": {
-        "start": "./start.sh",
-        "buildRelease": "rm -rf dist && tsc"
-    },
-    "author": "Curity AB",
-    "license": "Apache-2.0",
-    "type": "module",
-    "engines": {
-        "node": ">=24"
-    },
-    "dependencies": {
-        "cookie": "^1.0.1",
-        "cookie-parser": "^1.4.6",
-        "cors": "^2.8.5",
-        "express": "^5.2.1",
-        "jose": "^6.2.2"
-    },
-    "devDependencies": {
-        "@types/cookie-parser": "^1.4.6",
-        "@types/cors": "^2.8.17",
-        "@types/express": "^5.0.6",
-        "@types/node": "^24.10.3",
-        "tsx": "^4.21.0",
-        "typescript": "^6.0.2"
-    }
+  "name": "oauth-agent-node-express",
+  "version": "1.6.0",
+  "description": "An OAuth Agent that runs on the Express web server",
+  "scripts": {
+    "start": "./start.sh",
+    "buildRelease": "rm -rf dist && tsc"
+  },
+  "author": "Curity AB",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "cookie": "^1.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "jose": "^6.2.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
 }

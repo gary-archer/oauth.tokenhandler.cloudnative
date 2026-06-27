@@ -7,15 +7,6 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #
-# Create OpenSSL certificates for development if required
-#
-../certs/create.sh
-if [ $? -ne 0 ]; then
-  echo 'Problem encountered creating SSL certificates'
-  exit 1
-fi
-
-#
 # Run the docker deployment
 #
 docker compose --project-name tokenhandler up --force-recreate --detach

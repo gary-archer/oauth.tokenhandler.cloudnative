@@ -26,6 +26,15 @@ if [ $? -ne 0 ]; then
 fi
 
 #
+# Create OpenSSL certificates for development if required
+#
+../certs/create.sh
+if [ $? -ne 0 ]; then
+  echo 'Problem encountered creating SSL certificates'
+  exit 1
+fi
+
+#
 # Build the docker image for the Kong API Gateway
 #
 docker pull kong/kong-gateway:3.14-ubuntu

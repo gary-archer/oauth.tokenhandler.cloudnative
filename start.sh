@@ -66,7 +66,7 @@ if [ $? -ne 0 ]; then
 fi
 
 #
-# Run the API gateway with the OAuth Proxy plugin on port 446
+# Run the API gateway with the OAuth Proxy plugin on port 444
 #
 docker compose up --force-recreate --detach
 if [ $? -ne 0 ]; then
@@ -75,6 +75,6 @@ if [ $? -ne 0 ]; then
 fi
 
 #
-# Then run the OAuth agent on port 444
+# Then run the OAuth agent on port 446
 #
 npx tsx src/server.ts

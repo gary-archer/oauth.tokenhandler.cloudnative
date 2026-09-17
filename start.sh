@@ -3,7 +3,12 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #
-# Set environment variables
+# Generate a cookie encryption key
+#
+export COOKIE_ENCRYPTION_KEY=$(openssl rand 32 | xxd -p -c 64)
+
+#
+# Set other environment variables
 #
 export PORT=446
 export TRUSTED_WEB_ORIGIN='https://www.authsamples-dev.com'
@@ -19,7 +24,6 @@ export REDIRECT_URI='https://www.authsamples-dev.com/spa/callback'
 export POST_LOGOUT_REDIRECT_URI='https://www.authsamples-dev.com/spa/loggedout'
 export SCOPE='openid profile https://api.authsamples.com/investments'
 export COOKIE_NAME_PREFIX='authsamples'
-export COOKIE_ENCRYPTION_KEY='33be02f1b76feccf2c30a4847b0ad68d01756d7a9fb7f9a533b12b5d249a9c66'
 export SERVER_CERT_P12_PATH='./certs/authsamples-dev.ssl.p12'
 export SERVER_CERT_P12_PASSWORD='Password1'
 export API_COOKIE_BASE_PATH='/'
@@ -53,9 +57,18 @@ if [ $? -ne 0 ]; then
 fi
 
 #
+# Replace plugin variables
+#
+envsubst < kong-template.yml > kong.yml
+if [ $? -ne 0 ]; then
+  echo 'Problem encountered running envsubst to set environment variables'
+  exit 1
+fi
+
+#
 # Run the API gateway with the OAuth Proxy plugin on port 446
 #
-docker compose --project-name tokenhandler up --force-recreate --detach
+docker compose up --force-recreate --detach
 if [ $? -ne 0 ]; then
   echo 'Problem encountered running the API Gateway in docker'
   exit 1

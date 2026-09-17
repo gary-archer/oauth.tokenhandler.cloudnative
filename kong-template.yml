@@ -2,7 +2,6 @@ _format_version: '3.0'
 _transform: true
 
 services:
-
 - name: oauthuserinfo
   url: https://login.authsamples.com/oauth2/userInfo
   routes:
@@ -20,5 +19,5 @@ services:
       max_age: 86400
   - name: oauth-proxy
     config:
-      encryption_key: 33be02f1b76feccf2c30a4847b0ad68d01756d7a9fb7f9a533b12b5d249a9c66
+      encryption_key: "${COOKIE_ENCRYPTION_KEY}"
       cookie_name_prefix: authsamples

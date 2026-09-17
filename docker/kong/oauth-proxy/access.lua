@@ -71,6 +71,12 @@ end
 
 local function get_encryption_key_bytes(config)
 
+    ngx.log(ngx.WARN, '*** DEBUG ***')
+    ngx.log(ngx.WARN, '*** DEBUG ***')
+    ngx.log(ngx.WARN, '*** DEBUG ***')
+    ngx.log(ngx.WARN, config.encryption_key)
+    ngx.log(ngx.WARN, #config.encryption_key)
+    
     if #config.encryption_key ~= 64 then
         ngx.log(ngx.WARN, 'The encryption key must be supplied as 64 hex characters')
         return nil

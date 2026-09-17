@@ -36,3 +36,5 @@ services:
       - ../certs/authsamples-dev.ca.crt:/usr/local/share/certs/authsamples-dev.ca.crt
     env_file:
       - ./oauthagent/oauthagent.env
+    environment:
+      COOKIE_ENCRYPTION_KEY: "${COOKIE_ENCRYPTION_KEY}"

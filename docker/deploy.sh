@@ -7,6 +7,20 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #
+# Generate a cookie encryption key
+#
+export COOKIE_ENCRYPTION_KEY=$(openssl rand 32 | xxd -p -c 64)
+
+#
+# Replace plugin variables
+#
+envsubst < kong/kong-template.yml > kong/kong.yml
+if [ $? -ne 0 ]; then
+  echo 'Problem encountered running envsubst to set environment variables'
+  exit 1
+fi
+
+#
 # Run the docker deployment
 #
 docker compose --project-name tokenhandler up --force-recreate --detach

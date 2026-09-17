@@ -2,6 +2,7 @@
 node_modules
 dist
 data
+kong.yml
 certs/*.key
 certs/*.crt
 certs/*.p12

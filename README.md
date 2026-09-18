@@ -9,7 +9,13 @@ It consists of a utility OAuth Agent API and an OAuth Proxy that runs as an API 
 
 ![SPA Architecture](./images/spa-architecture.png)
 
-## Run the Token Handler
+## Configure DNS and SSL
+
+Configure custom development domains by adding this DNS entry to your hosts file:
+
+```bash
+127.0.0.1 localhost bfflocal.authsamples-dev.com
+```
 
 Install OpenSSL 3+ if required, create a secrets folder, then create development certificates:
 
@@ -19,7 +25,15 @@ mkdir -p "$SECRETS_FOLDER"
 ./certs/create.sh
 ```
 
-Run the OAuth Agent and an API gateway that runs the OAuth Proxy:
+Finally, configure [Browser SSL Trust](https://github.com/gary-archer/oauth.blog/tree/master/public/posts/developer-ssl-setup.mdx#trust-a-root-certificate-in-browsers) for the SSL root certificate at this location:
+
+```text
+./certs/authsamples-dev.ca.crt
+```
+
+## Run the Token Handler
+
+Run the OAuth Agent utility API, with an API gateway that runs the OAuth Proxy plugin:
 
 ```bash
 npm start
@@ -39,6 +53,8 @@ Then run the following command to call endpoints and test the cookie lifecycle:
 ```bash
 npm test
 ```
+
+Then run `docker compose down` to free resources.
 
 ## Deploy the Token Handler
 

@@ -17,7 +17,6 @@
 import crypto from 'crypto'
 import {SerializeOptions, serialize} from 'cookie'
 import {CookieDecryptionException, InvalidCookieException} from '../lib/exceptions/index.js'
-import {Base64Url} from './base64url.js';
 
 const GCM_IV_SIZE = 12;
 const GCM_TAG_SIZE = 16;
@@ -37,12 +36,12 @@ function encryptCookie(encKeyHex: string, plaintext: string): string {
     
     const allBytes = Buffer.concat([ivBytes, ciphertextBytes, tagBytes])
 
-    return Base64Url.encode(allBytes)
+    return allBytes.toString('base64url');
 }
 
 function decryptCookie(encKeyHex: string, encryptedbase64value: string): string {
     
-    const allBytes = Base64Url.decode(encryptedbase64value)
+    const allBytes = Buffer.from(encryptedbase64value, 'base64url')
 
     const minSize = GCM_IV_SIZE + 1 + GCM_TAG_SIZE
     if (allBytes.length < minSize) {

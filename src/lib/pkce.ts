@@ -32,16 +32,7 @@ function generateRandomString(length = 64): string {
 function generateHash(data: string): string {
     const hash = crypto.createHash('sha256')
     hash.update(data)
-    const hashedData = hash.digest('base64')
-
-    return base64UrlEncode(hashedData)
-}
-
-function base64UrlEncode(hashedData: string): string {
-    return hashedData
-        .replace(/=/g, '')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
+    return hash.digest('base64url');
 }
 
 function getTempLoginDataCookie(codeVerifier: string, state: string, options: SerializeOptions, cookieNamePrefix: string, encKey: string): string {

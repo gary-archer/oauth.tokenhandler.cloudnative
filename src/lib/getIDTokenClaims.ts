@@ -22,7 +22,8 @@ function getIDTokenClaimsFromCookie(encKey: string, encryptedCookie: string): Ob
     const idTokenPayload = decryptCookie(encKey, encryptedCookie)
 
     try {
-        return JSON.parse(String(Buffer.from(idTokenPayload, 'base64').toString('binary')))
+        const payloadJson = Buffer.from(idTokenPayload, 'base64url').toString('utf-8');
+        return JSON.parse(payloadJson);
     } catch (err: any) {
         throw new InvalidIDTokenException(new Error('The ID token payload could not be parsed'))
     }

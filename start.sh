@@ -31,7 +31,7 @@ export API_COOKIE_BASE_PATH='/'
 #
 # Install dependencies
 #
-npm install
+npm ci
 if [ $? -ne 0 ]; then
   echo 'Problem encountered installing dependencies'
   exit 1

@@ -1,4 +1,4 @@
-FROM node:24-trixie-slim
+FROM node:26-trixie-slim
 
 WORKDIR /usr/oauth-agent
 COPY --chown=10001:10000 dist            /usr/oauth-agent/dist

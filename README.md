@@ -9,10 +9,20 @@ It consists of a utility OAuth Agent API and an OAuth Proxy that runs as an API 
 
 ![SPA Architecture](./images/spa-architecture.png)
 
+The token handler has minimal impact on the performance of API requests:
+
+- The SPA makes OAuth requests to the OAuth Agent via the API gateway.
+- The SPA makes API requests via the API gateway, which runs the OAuth Proxy plugin.
+
 ## Local Development Quick Start
 
-The token handler uses a [Real World OAuth Development URL](https://github.com/gary-archer/oauth.blog/blob/master/public/posts/developer-ssl-setup.mdx#real-world-oauth-development-urls) on a local computer.  
-You must use admin permissions to configure infrastructure, starting with DNS entries in your `/etc/hosts` file:
+Run the code sample from a terminal on Linux, macOS or Windows (with Git bash).  
+The SPA and API use [Real World OAuth Development URLs](https://github.com/gary-archer/oauth.blog/blob/master/public/posts/developer-ssl-setup.mdx#real-world-oauth-development-urls) on a local computer.  
+
+### Administrator Setup
+
+You must use admin permissions to configure infrastructure before you run the code.  
+First, add DNS entries in your `/etc/hosts` file:
 
 ```bash
 127.0.0.1 localhost bfflocal.authsamples-dev.com
@@ -32,15 +42,13 @@ Ensure that Node.js 26+ is installed, then grant it access to listen on port 443
 sudo setcap 'cap_net_bind_service=+ep' $(which node)
 ```
 
-## Run the Token Handler
+### Run the Token Handler
 
 Run the OAuth Agent utility API, with an API gateway that runs the OAuth Proxy plugin:
 
 ```bash
 npm start
 ```
-
-## Test the Token Handler
 
 Install a UI test framework that can do browser logins:
 
@@ -57,7 +65,7 @@ npm test
 
 Then run `docker compose down` to free resources.
 
-## Deploy the Token Handler
+### Deploy the Token Handler
 
 Deploy the token handler to Docker with the following commands:
 
@@ -67,9 +75,3 @@ Deploy the token handler to Docker with the following commands:
 ./docker/teardown.sh
 ```
 
-## API Performance
-
-The token handler has minimal impact on the performance of API requests:
-
-- The SPA makes OAuth requests to the OAuth Agent via the API gateway.
-- The SPA makes API requests via the API gateway, which runs the OAuth Proxy plugin.

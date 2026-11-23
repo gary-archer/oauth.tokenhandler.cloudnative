@@ -17,7 +17,7 @@ The token handler has minimal impact on the performance of API requests:
 ## Local Development Quick Start
 
 Run the code sample from a terminal on Linux, macOS or Windows (with Git bash).  
-The SPA and API use [Real World OAuth Development URLs](https://github.com/gary-archer/oauth.blog/blob/master/public/posts/developer-ssl-setup.mdx#real-world-oauth-development-urls) on a local computer.  
+The token handler uses [Real World OAuth Development URLs](https://github.com/gary-archer/oauth.blog/blob/master/public/posts/developer-ssl-setup.mdx#real-world-oauth-development-urls) on a local computer.  
 
 ### Administrator Setup
 
@@ -34,6 +34,12 @@ Make sure OpenSSL 3+ is installed, specify a secrets folder, then create develop
 export SECRETS_FOLDER="$HOME/secrets"
 mkdir -p "$SECRETS_FOLDER"
 ./certs/create.sh
+```
+
+You may need to configure [HTTPS Trust](https://github.com/gary-archer/oauth.blog/blob/master/public/posts/developer-ssl-setup.mdx#configure-operating-system-trust) for the SSL root certificate at the following location:
+
+```text
+./certs/authsamples-dev.ca.crt
 ```
 
 Ensure that Node.js 26+ is installed, then grant it access to listen on port 443:
